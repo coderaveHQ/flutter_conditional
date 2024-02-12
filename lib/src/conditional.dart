@@ -4,16 +4,23 @@ import 'package:flutter_conditional/src/case.dart';
 import 'package:flutter_conditional/src/typedefs.dart';
 import 'package:flutter_conditional/src/value.dart';
 
+/// A widget that conditionally renders different widgets based on provided cases.
 class Conditional extends StatelessWidget {
+  /// The list of cases to evaluate and render.
   final List<Case>? cases;
+
+  /// A fallback builder that is executed when none of the cases match.
   final OptionalWidgetBuilder? fallbackBuilder;
 
+  /// Creates a Conditional widget with a single case.
   Conditional.single(bool condition,
       {super.key, OptionalWidgetBuilder? builder, this.fallbackBuilder})
       : cases = [Case(condition, builder: builder)];
 
+  /// Creates a Conditional widget with multiple cases.
   const Conditional.multiCase({super.key, this.cases, this.fallbackBuilder});
 
+  /// Creates a Conditional widget with multiple cases based on matching values.
   static Conditional multiMatch<T>(T value,
       {List<Value<T>>? values, OptionalWidgetBuilder? fallbackBuilder}) {
     final List<Case> cases = values
