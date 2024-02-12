@@ -1,5 +1,5 @@
 name: flutter_conditional
-description: 'A Flutter package for rendering widgets conditionally.'
+description: 'A Flutter package for rendering widgets conditionally making code more readable.'
 version: 1.0.0+1
 
 homepage: https://github.com/scialapp/flutter_conditional
