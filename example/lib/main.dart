@@ -44,8 +44,8 @@ class _AppState extends State<App> {
           child: Column(
             children: [
               Conditional.single(
-                firstExpression,
-                builder: (BuildContext _) => const CustomCard(
+                condition: firstExpression,
+                widget: const CustomCard(
                   color: Colors.blue, 
                   text: 'FIRST EXPRESSION'
                 )
@@ -53,39 +53,39 @@ class _AppState extends State<App> {
               Conditional.multiCase(
                 cases: <Case>[
                   Case(
-                    secondExpression,
+                    condition: secondExpression,
                     isActive: false,
-                    builder: (BuildContext _) => const CustomCard(
+                    widget: const CustomCard(
                       color: Colors.green, 
                       text: 'SECOND EXPRESSION 1'
                     )
                   ),
                   Case(
-                    secondExpression,
-                    builder: (BuildContext _) => const CustomCard(
+                    condition: secondExpression,
+                    widget: const CustomCard(
                       color: Colors.orange, 
                       text: 'SECOND EXPRESSION 2'
                     )
                   )
                 ],
-                fallbackBuilder: (BuildContext _) => const CustomCard(
+                fallback: const CustomCard(
                   color: Colors.green, 
                   text: 'SECOND EXPRESSION FALLBACK'
                 )
               ),
               Conditional.multiMatch<String>(
-                company,
+                value: company,
                 values: <Value<String>>[
-                  Value<String>(
-                    'scial', 
-                    builder: (BuildContext context) => const CustomCard(
+                  const Value<String>(
+                    value: 'scial', 
+                    widget: CustomCard(
                       color: Colors.pink, 
                       text: 'scial'
                     )
                   ),
-                  Value<String>(
-                    'Tesla', 
-                    builder: (BuildContext context) => const CustomCard(
+                  const Value<String>(
+                    value: 'Tesla', 
+                    widget: CustomCard(
                       color: Colors.purple, 
                       text: 'Tesla'
                     )

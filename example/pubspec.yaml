@@ -10,7 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_conditional: ^1.0.0+1
+  flutter_conditional: ^2.0.0
 
 dev_dependencies:
   flutter_lints: ^2.0.0

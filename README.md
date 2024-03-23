@@ -9,6 +9,51 @@ Developed with 💙 and maintained by [scial.app](https://scial.app)
 
 [!["Buy Me A Coffee"](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/scial.app)
 
+## Migration 🆙
+
+<details>
+  <summary>Migrating to 2.0.0</summary>
+
+  - Replace builder functions with named parameters:
+
+  ### Before
+
+  ```dart
+  class SomeWidget extends StatelessWidget {
+
+    Widget build(BuildContext context) {
+
+      final bool someCondition = false;
+
+      return Conditional.single(
+        someCondition,
+        builder: (BuildContext _) => WidgetA(),
+        fallbackBuilder: (BuildContext _) => WidgetB()
+      );
+    }
+  }
+  ```
+
+  ### After
+
+  ```dart
+  class SomeWidget extends StatelessWidget {
+
+    Widget build(BuildContext context) {
+
+      final bool someCondition = false;
+
+      return Conditional.single(
+        condition: someCondition,
+        widget: WidgetA(),
+        fallback: WidgetB()
+      );
+    }
+  }
+  ```
+
+</details>
+
 ## Quick Start 🚀
 
 ### Installation 🧑‍💻
@@ -42,9 +87,9 @@ class TrueOrFalseWidget extends StatelessWidget {
     final bool ideaForName = false;
 
     return Conditional.single(
-      ideaForName,
-      builder: (BuildContext _) => TrueWidget(),
-      fallbackBuilder: (BuildContext _) => FalseWidget()
+      condition: ideaForName,
+      widget: TrueWidget(),
+      fallback: FalseWidget()
     );
   }
 }
@@ -66,19 +111,19 @@ class MultiWidget extends StatelessWidget {
     return Conditional.multiCase(
       cases: [
         Case(
-          randomNumber == 0,
-          builder: (BuildContext _) => NumberWidget()
+          condition: randomNumber == 0,
+          widget: NumberWidget()
         ),
         Case(
-          randomOS == 'Linux',
-          builder: (BuildContext _) => OSWidget() // <-- This is returned
+          condition: randomOS == 'Linux',
+          widget: OSWidget() // <-- This is returned
         ),
         Case(
-          isSchroedingersCatAlive,
-          builder: (BuildContext _) => SchroedingersWidget()
+          condition: isSchroedingersCatAlive,
+          widget: SchroedingersWidget()
         )
       ],
-      fallbackBuilder: (BuildContext _) => OtherWidget()
+      fallback: OtherWidget()
     )
   }
 }
@@ -96,22 +141,22 @@ class CarWidget extends StatelessWidget {
     final String carCompany = 'Tesla';
 
     return Conditional.multiMatch<String>(
-      carCompany,
+      value: carCompany,
       values: [
         Value(
-          'Tesla',
-          builder: (BuildContext _) => TeslaWidget() // <-- This is returned
+          value: 'Tesla',
+          widget: TeslaWidget() // <-- This is returned
         ),
         Value(
-          'Mercedes',
-          builder: (BuildContext _) => MercedesWidget()
+          value: 'Mercedes',
+          widget: MercedesWidget()
         ),
         Value(
-          'BMW',
-          builder: (BuildContext _) => BMWWidget()
+          value: 'BMW',
+          widget: BMWWidget()
         )
       ],
-      fallbackBuilder: (BuildContext _) => OtherWidget()
+      fallback: OtherWidget()
     );
   }
 }
@@ -134,32 +179,43 @@ class SeasonWidget extends StatelessWidget {
     final Seasons season = Seasons.winter;
 
     return Conditional.multiMatch<Seasons>(
-      season,
+      value: season,
       values: [
         Value(
-          Seasons.summer,
-          builder: (BuildContext _) => SummerWidget()
+          value: Seasons.summer,
+          widget: SummerWidget()
         ),
         Value(
-          Seasons.autumn,
-          builder: (BuildContext _) => AutumnWidget()
+          value: Seasons.autumn,
+          widget: AutumnWidget()
         ),
         Value(
-          Seasons.winter,
-          builder: (BuildContext _) => WinterWidget() // <-- This is returned
+          value: Seasons.winter,
+          widget: WinterWidget() // <-- This is returned
         ),
         Value(
-          Seasons.spring,
-          builder: (BuildContext _) => SpringWidget()
+          value: Seasons.spring,
+          widget: SpringWidget()
         )
       ],
-      fallbackBuilder: (BuildContext _) => OtherWidget()
+      fallback: OtherWidget()
     );
   }
 }
 ```
 
 ## Additional features ⚜️
+
+### Optional Widgets
+
+In some cases you don't even want to render any widget if a given condition isn't fullfilled.
+Therefore we introduced additional functions that can also return `null`.
+
+- `.optionalSingle(...)`
+- `.optionalMultiCase(...)`
+- `.optionalMultiMatch(...)`
+
+### isActive
 
 Sometimes you even want to make cases conditional. Therefore we introduces `isActive` as a parameter. If you don't want one or more cases to be in considered for the build method, just pass `true` to it like in the following example:
 
@@ -174,16 +230,16 @@ class ProfileWidget extends StatelessWidget {
     return Conditional.multiCase(
       cases: [
         Case(
-          iLoveDart,
+          condition: iLoveDart,
           isActive: possiblyChanging,
-          builder: (BuildContext _) => FirstWidget()
+          widget: FirstWidget()
         ),
         Case(
-          iLoveDart,
-          builder: (BuildContext _) => SecondWidget() // <-- This is returned
+          condition: iLoveDart,
+          widget: SecondWidget() // <-- This is returned
         )
       ],
-      fallbackBuilder: (BuildContext _) => OtherWidget()
+      fallback: OtherWidget()
     )
   }
 }
@@ -195,7 +251,7 @@ class ProfileWidget extends StatelessWidget {
 
 - The first widget whose case is true will be returned.
 
-- The default fallback widget is `SizedBox.shrink()`
+- The default fallback widget is `SizedBox.shrink()` if you're not using one of the functions introduced in version `2.0.0`.
 
 ## Contribution 💙
 

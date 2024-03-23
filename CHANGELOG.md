@@ -1,3 +1,8 @@
+## 2.0.0
+
+- **BREAKING:** Replaces builder functions with named parameters.
+- Introduces optional returning functions
+
 ## 1.0.0+2
 
 - Adds comments as documentation

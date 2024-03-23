@@ -1,17 +1,16 @@
-import 'package:flutter_conditional/src/typedefs.dart';
+import 'package:flutter/widgets.dart';
 
-/// Represents a case in the Conditional widget.
+// This class represents a case in a conditional statement.
 class Case {
-  /// The condition expression for this case.
-  final bool expression;
+  // The condition for this case
+  final bool condition;
 
-  /// Determines if this case is active or not.
+  // Indicates whether this case is active or not
   final bool isActive;
 
-  /// A builder function that returns a widget based on the condition.
-  final OptionalWidgetBuilder? builder;
+  // The widget returned when the condition is met
+  final Widget? widget;
 
-  /// Creates a new Case with the provided condition expression, isActive status,
-  /// and an optional builder function.
-  const Case(this.expression, {this.isActive = true, this.builder});
+  // Constructor for the Case class
+  const Case({this.condition = false, this.isActive = true, this.widget});
 }

@@ -1,17 +1,16 @@
-import 'package:flutter_conditional/src/typedefs.dart';
+import 'package:flutter/widgets.dart';
 
-/// Represents a value in the Conditional widget.
+// This class represents a value in a conditional statement.
 class Value<T> {
-  /// The value to match against in the Conditional widget.
-  final T value;
+  // The value of this object
+  final T? value;
 
-  /// Determines if this value is active or not.
+  // Indicates whether this value is active or not
   final bool isActive;
 
-  /// A builder function that returns a widget based on the matched value.
-  final OptionalWidgetBuilder? builder;
+  // The widget returned when this value matches
+  final Widget? widget;
 
-  /// Creates a new Value with the provided value, isActive status,
-  /// and an optional builder function.
-  const Value(this.value, {this.isActive = true, this.builder});
+  // Constructor for the Value class
+  const Value({this.value, this.isActive = true, this.widget});
 }
