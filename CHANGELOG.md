@@ -1,3 +1,7 @@
+## 2.0.0+1
+
+- Formats code comments
+
 ## 2.0.0
 
 - **BREAKING:** Replaces builder functions with named parameters.
