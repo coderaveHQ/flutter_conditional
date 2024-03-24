@@ -26,10 +26,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_conditional
-      sha256: "2048660ac6af9c00f57419747a6eb91094dc0a9e5b9222b82eb151913864120d"
+      sha256: cf4b7433050acc0af55d2c1123437f8b1c421de4a6d421e197b9b8361a798192
       url: "https://pub.dev"
     source: hosted
-    version: "1.0.0+1"
+    version: "2.0.0+1"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -76,5 +76,5 @@ packages:
     source: hosted
     version: "2.1.4"
 sdks:
-  dart: ">=3.2.5 <4.0.0"
+  dart: ">=3.2.0-0 <4.0.0"
   flutter: ">=1.17.0"
