@@ -1,3 +1,7 @@
+## 2.1.0
+
+- Introduces additional methods with builder functions
+
 ## 2.0.0+1
 
 - Formats code comments

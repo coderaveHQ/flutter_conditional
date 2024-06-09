@@ -52,6 +52,14 @@ Developed with 💙 and maintained by [scial.app](https://scial.app)
   }
   ```
 
+  - Or make use of the methods introduced in version `2.1.0`:
+    - `.singleBuilder(...)`
+    - `.multiCaseBuilder(...)`
+    - `.multiMatchBuilder<T>(...)`
+    - `.optionalSingleBuilder(...)`
+    - `.optionalMultiCaseBuilder(...)`
+    - `.optionalMultiMatchBuilder<T>(...)`
+
 </details>
 
 ## Quick Start 🚀
@@ -129,7 +137,7 @@ class MultiWidget extends StatelessWidget {
 }
 ```
 
-#### `.multiMatch(...)`
+#### `.multiMatch<T>(...)`
 
 This constructor lets you compare objects.
 
@@ -209,11 +217,23 @@ class SeasonWidget extends StatelessWidget {
 ### Optional Widgets
 
 In some cases you don't even want to render any widget if a given condition isn't fullfilled.
-Therefore we introduced additional functions that can also return `null`.
+Therefore we introduced additional functions that can also return `null`:
 
 - `.optionalSingle(...)`
 - `.optionalMultiCase(...)`
-- `.optionalMultiMatch(...)`
+- `.optionalMultiMatch<T>(...)`
+
+### Builder Functions
+
+In some cases you want to make use of builder functions instead.
+Therefore we introduced additional functions that accept builder functions:
+
+- `.singleBuilder(...)`
+- `.multiCaseBuilder(...)`
+- `.multiMatchBuilder<T>(...)`
+- `.optionalSingleBuilder(...)`
+- `.optionalMultiCaseBuilder(...)`
+- `.optionalMultiMatchBuilder<T>(...)`
 
 ### isActive
 
