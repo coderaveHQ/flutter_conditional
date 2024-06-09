@@ -1,3 +1,7 @@
+## 2.1.0+1
+
+- Removes unnecessary imports
+
 ## 2.1.0
 
 - Introduces additional methods with builder functions

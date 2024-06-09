@@ -1,7 +1,6 @@
 import 'package:flutter/widgets.dart';
 
 import 'package:flutter_conditional/flutter_conditional.dart';
-import 'package:flutter_conditional/src/typedefs.dart';
 
 /// This class represents a value in a conditional statement with a builder function
 class BuilderValue<T> {
