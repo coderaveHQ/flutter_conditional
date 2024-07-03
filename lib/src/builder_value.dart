@@ -19,9 +19,6 @@ class BuilderValue<T> {
   /// This method returns a Value based on the builder function
   Value<T> toValue(BuildContext context) {
     return Value<T>(
-      value: value,
-      isActive: isActive,
-      widget: widgetBuilder?.call(context)
-    );
+        value: value, isActive: isActive, widget: widgetBuilder?.call(context));
   }
 }

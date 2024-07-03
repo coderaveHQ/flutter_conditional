@@ -14,14 +14,14 @@ class BuilderCase {
   final OptionalWidgetBuilder? widgetBuilder;
 
   /// Constructor for the BuilderCase class
-  const BuilderCase({this.condition = false, this.isActive = true, this.widgetBuilder});
+  const BuilderCase(
+      {this.condition = false, this.isActive = true, this.widgetBuilder});
 
   /// This method returns a Case based on the builder function
   Case toCase(BuildContext context) {
     return Case(
-      condition: condition,
-      isActive: isActive,
-      widget: widgetBuilder?.call(context)
-    );
+        condition: condition,
+        isActive: isActive,
+        widget: widgetBuilder?.call(context));
   }
 }

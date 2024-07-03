@@ -1,3 +1,7 @@
+## 2.1.0+2
+
+- Formats code
+
 ## 2.1.0+1
 
 - Removes unnecessary imports
